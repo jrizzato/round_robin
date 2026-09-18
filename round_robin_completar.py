@@ -10,7 +10,7 @@ class Proceso:
         # Al principio falta ejecutar todo el burst
         self.restante = burst
 
-        # Se completa cuando el proceso termina
+        # Aquí se registra el tiempo en el que finalizó
         self.finalizacion = 0
 
 def round_robin(procesos, quantum, tamanio_cola):
@@ -83,18 +83,15 @@ def round_robin(procesos, quantum, tamanio_cola):
 
 if __name__ == "__main__":
 
-    # Caso de prueba 1 (Requerido en el TP)
+    # Caso de prueba 1 (Ejemplo explicado en el TP)
     procesos_1 = [
-        Proceso("P1", 0, 5),
-        Proceso("P2", 2, 3),
-        Proceso("P3", 3, 1),
-        Proceso("P4", 5, 2),
-        Proceso("P5", 6, 5),
-        Proceso("P6", 8, 4)
+        Proceso("P1", 0, 6),
+        Proceso("P2", 3, 3),
+        Proceso("P3", 6, 7)
     ]
 
-    print("--- CASO DE PRUEBA 1 (Quantum = 2) ---")
-    round_robin(procesos_1, 2, 10)
+    print("--- CASO DE PRUEBA 1 (Quantum = 4) ---")
+    round_robin(procesos_1, 4, 10)
     print("ProcessID\tArrivalTime\tBurstTime\tTurnaround Time\tWaitingTime")
 
     for proceso in procesos_1:
@@ -116,17 +113,19 @@ if __name__ == "__main__":
             waiting,
             sep="\t\t"
         )
-    print("\n")
-
-    # Caso de prueba 2 (Ejemplo explicado en la teoría del TP)
+    
+    # Caso de prueba 2 (Requerido en el TP)
     procesos_2 = [
-        Proceso("P1", 0, 6),
-        Proceso("P2", 3, 3),
-        Proceso("P3", 6, 7)
+        Proceso("P1", 0, 5),
+        Proceso("P2", 2, 3),
+        Proceso("P3", 3, 1),
+        Proceso("P4", 5, 2),
+        Proceso("P5", 6, 5),
+        Proceso("P6", 8, 4)
     ]
 
-    print("--- CASO DE PRUEBA 2 (Quantum = 4 - Ejemplo del PDF) ---")
-    round_robin(procesos_2, 4, 10)
+    print("--- CASO DE PRUEBA 2 (Quantum = 2) ---")
+    round_robin(procesos_2, 2, 10)
     print("ProcessID\tArrivalTime\tBurstTime\tTurnaround Time\tWaitingTime")
 
     for proceso in procesos_2:
@@ -142,3 +141,6 @@ if __name__ == "__main__":
             waiting,
             sep="\t\t"
         )
+    print("\n")
+
+    
